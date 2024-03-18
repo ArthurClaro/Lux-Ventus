@@ -6,6 +6,10 @@ import { PublishData } from "@/schemas/user.schema";
 import api from "@/services/api";
 import { useEffect, useState } from "react";
 
+// import { getImage, StaticImage } from 'next/image';
+import Logo from "../assets/luxventus-logo.png"
+
+
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 export interface PublishData22 {
   title: String
@@ -48,11 +52,12 @@ export default async function Home() {
   // setAtt(publish)
 
   console.log(publish)
- 
+
   return (
     <main className="body min-h-screen p-4">
       <h1>oláaaaaaaaaaaaaaaaa</h1>
       {/* <ListPublish publish={publish} /> */}
+      <img src={Logo} alt="awd" />
 
       <ul>
         {publish.map((publishItem: any) => (
