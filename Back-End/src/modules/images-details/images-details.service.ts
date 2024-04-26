@@ -57,9 +57,17 @@ export class ImagesDetailsService {
   }
 
 
-  findOne(id: number) {
-    return `This action returns a #${id} imagesDetail`;
+  async findOne(id: string) {
+    const user = await this.prisma.imagesDetail.findMany({ where: { detailPublishId: id }})
+
+    if (!user) {
+      throw new NotFoundException("DetailPublish does not exists")
+    }
+
+    return plainToInstance(ImagesDetail, user)
+
   }
+
 
   update(id: number, updateImagesDetailDto: UpdateImagesDetailDto) {
     return `This action updates a #${id} imagesDetail`;

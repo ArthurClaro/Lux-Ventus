@@ -26,19 +26,33 @@ export class PublishService {
   }
 
   async findAll() {
-    const users = await this.prisma.publish.findMany({ include: { DetailPublish: true } })
+    const users = await this.prisma.publish.findMany({ include: { DetailPublish: true, comments: true } })
+
     return plainToInstance(Publish, users)
   }
 
-  async findOne(id: string): Promise<Publish> {
-    const user = await this.prisma.publish.findUnique({ where: { id }, include: { DetailPublish: true } })
-    if (!user) {
-      throw new NotFoundException("Publish does not exists")
+
+
+
+  async findManyByCategory(categoryId: string) {
+    const users = await this.prisma.publish.findMany({ where: { category: categoryId }, include: { DetailPublish: true,comments: true } });
+    if (!users.length) {
+      throw new NotFoundException("Publishes with this category do not exist");
     }
-    return plainToInstance(Publish, user)
+    return plainToInstance(Publish, users);
   }
 
-  async update( id: string, updatePublishDto: UpdatePublishDto) {
+
+  async findOneById(id: string) {
+    const user = await this.prisma.publish.findUnique({ where: { id }, include: { DetailPublish: true,comments: true } });
+    if (!user) {
+      throw new NotFoundException("Publish does not exist");
+    }
+    return plainToInstance(Publish, user);
+  }
+
+
+  async update(id: string, updatePublishDto: UpdatePublishDto) {
     const user = await this.prisma.publish.findUnique({ where: { id } })
     if (!user) {
       throw new NotFoundException("Publish does not exists")
@@ -47,7 +61,7 @@ export class PublishService {
     return plainToInstance(Publish, updatedUser)
   }
 
-  
+
 
   async upload(image: Express.Multer.File, id: string) {
     cloudinary.config({

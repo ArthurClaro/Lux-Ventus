@@ -24,6 +24,7 @@ export class DetailPublishService {
         id: detailP.id,
         title: detailP.title,
         description: detailP.description,
+
         publishId
       }
     })
@@ -32,12 +33,14 @@ export class DetailPublishService {
   }
 
   async findAll() {
-    const users = await this.prisma.detailPublish.findMany({ include: { ImagesDetail: true, comments: true } })
+    const users = await this.prisma.detailPublish.findMany({ include: { ImagesDetail: true} })
+    // , comments: true 
     return plainToInstance(DetailPublish, users)
   }
 
-  async findOne(id: string): Promise<DetailPublish> {
-    const user = await this.prisma.detailPublish.findUnique({ where: { id }, include: { ImagesDetail: true, comments: true } })
+  async findOne(id: string) {
+    const user = await this.prisma.detailPublish.findMany({ where: { publishId: id }, include: { ImagesDetail: true } })
+    // comments: true
     if (!user) {
       throw new NotFoundException("DetailPublish does not exists")
     }

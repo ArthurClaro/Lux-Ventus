@@ -11,28 +11,27 @@ datasource db {
 }
 
 model Publish {
-  id          String   @id @default(uuid())
+  id          String @id @default(uuid())
   title       String
   description String
   image       String
 
-  publiHot    Boolean  @default(false)
-  category    String
-  host        String
-  imgHost     String
-  createdAt   DateTime @default(now())
+  publiHot  Boolean @default(false)
+  category  String
+  host      String
+  imgHost   String
+  createdAt String
 
   DetailPublish DetailPublish[]
+  comments      Comment[]
 }
 
 model DetailPublish {
-  id           String         @id @default(uuid())
-  title        String
-  description  String
+  id          String @id @default(uuid())
+  title       String
+  description String
 
   ImagesDetail ImagesDetail[]
-
-  comments Comment[]
 
   Publish   Publish @relation(fields: [publishId], references: [id], onDelete: Cascade)
   publishId String
@@ -49,134 +48,10 @@ model ImagesDetail {
 model Comment {
   id          String   @id @default(uuid())
   name        String
-  createdAt   DateTime @default(now())
+  createdAt   String
   description String
   likes       Int
-  // email?
 
-  DetailPublish   DetailPublish @relation(fields: [detailPublishId], references: [id], onDelete: Cascade)
-  detailPublishId String
+  Publish   Publish @relation(fields: [publishId], references: [id], onDelete: Cascade)
+  publishId String
 }
-
-
-
-
-
-
-
-
-
-
-// ////////////////////////////////////////////////////////////////
-enum Gender {
-  Masculino
-  Feminino
-  Outro
-}
-
-model User {
-  id    String @id @default(uuid())
-  name  String
-  email String @unique
-
-  password String
-
-  gender    Gender   @default(Outro)
-  height    Float
-  weight    Int
-  createdAt DateTime @default(now())
-  // date somente 
-
-  // grupoMusculares[]
-  musics Music[]
-
-  day Day[]
-}
-
-model GroupsMuscle {
-  id   String @id @default(uuid())
-  nome String @unique
-  // chest    ChestDay[]
-  // cardio   CardioDay[]
-  // day      Int
-  day  Day[]
-  // training Training[]
-
-  // diasTreinados       String
-  // dias      String
-  // volTotalTreinoDiaAnterior Int
-}
-
-model Day {
-  id       String @id @default(uuid())
-  category String
-
-  createdAt String
-
-  training Training[]
-
-  GroupsMuscle GroupsMuscle @relation(fields: [category], references: [nome])
-  User         User         @relation(fields: [userId], references: [id])
-  userId       String
-}
-
-model Training {
-  id          String @id @default(uuid())
-  name        String
-  serie       Int
-  kg          Int
-  repetitions Int
-  volume      Int
-  // cardiogDay  CardioDay? @relation(fields: [cardioDayId], references: [id])
-  // cardioDayId String?
-  // chestDay    ChestDay?  @relation(fields: [chestDayId], references: [id])
-  // chestDayId  String?
-
-  // group   GroupsMuscle? @relation(fields: [groupId], references: [id])
-  // groupId String?
-  Day   Day    @relation(fields: [dayId], references: [id], onDelete: Cascade)
-  dayId String
-}
-
-// model ChestDay {
-//   id       String       @id
-//   category String
-//   day      Int
-//   // volTotalTraining Int
-//   // qntFaltante        Int
-//   group    GroupsMuscle @relation(fields: [groupId], references: [id])
-//   groupId  String
-
-//   training Training[]
-// }
-
-model Music {
-  id          String  @id
-  name        String
-  album       String
-  artist      String
-  year        String
-  genre       String
-  cover_image String?
-  music_url   String?
-  user        User    @relation(fields: [userId], references: [id])
-  userId      String
-}
-
-// relations :::  1:N / 1:1 / N:N
-// https://vimeo.com/908253234/94de9f79c0?share=copy
-// min: 59:00
-
-// model TrainingComplete {
-//   id          String @id @default(uuid())
-//   category    String
-//   day         String
-//   name        String
-//   serie       Int
-//   kg          Int
-//   repetitions Int
-//   volume      Int
-
-//   Day   Day    @relation(fields: [dayId], references: [id])
-//   dayId String
-// }

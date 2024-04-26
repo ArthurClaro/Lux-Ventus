@@ -1,19 +1,5 @@
 import { z } from "zod";
 
-export const UserSchema = z.object({
-  name: z.string().min(1,"Nome é obrigatório"),
-  email: z.string().email("Deve ser um e-mail válido"),
-  password: z.string().min(1,"Senha é obrigatória")
-});
-
-export const LoginSchema = UserSchema.omit({
-  name: true
-});
-
-export type UserData = z.infer<typeof UserSchema>;
-export type LoginData = z.infer<typeof LoginSchema>;
-
-// /////////////////////////
 
 export const PublishSchema = z.object({
   id: z.string(),
@@ -25,7 +11,21 @@ export const PublishSchema = z.object({
   host: z.string(),
   imgHost: z.string(),
   createdAt: z.string(),
-  // DetailPublish: z.array(),
 })
-
 export type PublishData = z.infer<typeof PublishSchema>
+
+
+export const CommentSchema = z.object({
+  name: z.string().min(1, "Nome é obrigatório"),
+  description: z.string().min(5, "Deve conter no mínimo 5 caracteres."),
+  email: z.string().email("Deve ser um e-mail válido")
+});
+export type CommentData = z.infer<typeof CommentSchema>;
+
+export const ContactSchema = z.object({
+  name: z.string().min(1, "Nome é obrigatório"),
+  email: z.string().email("Deve ser um e-mail válido"),
+  message: z.string().min(1, "Tópico é obrigatório"),
+  description: z.string().min(5, "Deve conter no mínimo 5 caracteres."),
+});
+// export type CommentData = z.infer<typeof CommentSchema>;

@@ -8,7 +8,7 @@ import { plainToInstance } from 'class-transformer';
 @Injectable()
 export class CommentsService {
   constructor(private prisma: PrismaService) { }
-  async create(createCommentDto: CreateCommentDto, detailPublishId: string) {
+  async create(createCommentDto: CreateCommentDto, publishId: string) {
     const detailP = Object.assign(new Comment(), createCommentDto)
     const newMusic = await this.prisma.comment.create({
       data: {
@@ -17,19 +17,26 @@ export class CommentsService {
         createdAt: detailP.createdAt,
         description: detailP.description,
         likes: detailP.likes,
-        detailPublishId
+        publishId
       }
     })
 
     return newMusic
   }
   async findAll() {
-    const users = await this.prisma.comment.findMany({ include: { DetailPublish: true } })
+    const users = await this.prisma.comment.findMany({ include: { Publish: true } })
     return plainToInstance(Comment, users)
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} comment`;
+
+  async findOne(id: string) {
+    // const user = await this.prisma.comment.findMany({ where: { publishId: id }, include: { Publish: true } })
+    const user = await this.prisma.comment.findMany({ where: { publishId: id }})
+
+    if (!user) {
+      throw new NotFoundException("DetailPublish does not exists")
+    }
+    return plainToInstance(Comment, user)
   }
 
   update(id: number, updateCommentDto: UpdateCommentDto) {

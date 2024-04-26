@@ -1,0 +1,194 @@
+.sec {
+    background-image: url(../../assets/LogoHome.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+    height: 590px;
+    border-radius: 20px;
+    width: 100%;
+
+    &>div {
+        display: flex;
+        flex-direction: column;
+        padding: 214px 0px 0px 42px;
+
+        @media (max-width: 583px) {
+            padding-top: 101px;
+        }
+
+        &>h5 {
+            width: 100%;
+            font-family: "Poppins", sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            font-style: normal;
+            line-height: 12px;
+            color: #FFFFFF;
+            letter-spacing: 3.3px;
+        }
+
+        &>h2 {
+            height: 11px;
+            width: 100%;
+            font-family: "Poppins", sans-serif;
+            font-size: 50px;
+            font-weight: 300;
+            font-style: normal;
+            line-height: 12px;
+            color: #FFFFFF;
+
+            @media (max-width: 897px) {
+                line-height: 53px;
+                padding-bottom: 40px;
+                margin: 0px 0px 68px 0px;
+            }
+
+            &>span {
+                background: linear-gradient(100deg, rgba(76, 224, 215, 1) 0%, rgba(139, 169, 244, 1) 100%);
+                background-size: 100%;
+                background-repeat: repeat;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font-weight: 700;
+            }
+        }
+
+        &>p {
+            color: #FFFFFF;
+            font-size: 22px;
+            line-height: 30px;
+            width: 547px;
+            font-weight: 300;
+            word-break: break-word;
+            font-weight: 300;
+
+            @media (max-width: 641px) {
+                width: 444px;
+            }
+
+            @media (max-width: 601px) {
+                width: 100%;
+            }
+
+            @media (max-width: 487px) {
+                padding-top: 40px;
+            }
+        }
+    }
+
+
+    @media (max-width: 727px) {
+        &>div {
+            padding-left: 10px;
+        }
+    }
+
+    @media (max-width: 420px) {
+        border-radius: 60px;
+        background-image: url(../../assets/LogoHomeMobile.svg);
+        width: 1211px;
+        width: 680px;
+        width: 100%;
+        height: 1786px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 30px;
+        width: 100%;
+        height: 559px;
+
+        &>div {
+            align-items: center;
+            scale: 0.5;
+
+            @media (max-width: 395px) {
+                scale: 0.45;
+            }
+
+            @media (max-width: 361px) {
+                scale: 1;
+                width: 100%;
+                padding: 48px 5px 0px 5px;
+            }
+
+            padding: 126px 0px 0px 0px;
+
+            &>h5 {
+                text-align: center;
+                font-size: 29px;
+                letter-spacing: 9px;
+
+                @media (max-width: 361px) {
+                    width: 100%;
+                    font-size: 16px;
+                    margin: 0px;
+                    line-height: 20px;
+                    height: 100%;
+                }
+            }
+
+            &>h2 {
+                font-size: 88px;
+                width: 716px;
+                line-height: 120px;
+                height: 193px;
+                text-align: center;
+                font-weight: 400;
+                margin: 15px 0px 22px 0px;
+
+                @media (max-width: 361px) {
+                    width: 100%;
+                    font-size: 45px;
+                    line-height: 47px;
+                    margin: 9px 0px;
+                    padding: 0px;
+                    height: 100%;
+                }
+            }
+
+            &>p {
+                font-size: 31px;
+                text-align: center;
+                word-break: break-all;
+                line-height: 50px;
+                padding-top: 51px;
+
+                @media (max-width: 361px) {
+                    width: 100%;
+                    font-size: 17px;
+                    line-height: 29px;
+                    padding: 0px;
+                    height: 94px;
+                    margin: 0px;
+                }
+            }
+        }
+    }
+
+}
+
+.article {
+    margin-top: 35px;
+
+    &>h3 {
+        font-size: 32px;
+        font-weight: 700;
+        color: #262626;
+
+        @media (max-width: 396px) {
+            font-size: 50px !important;
+            padding-top: 14px !important;
+            margin: 20px 0px;
+        }
+    }
+
+    @media (max-width: 420px) {
+        &>h3 {
+            font-size: 67px;
+            margin: 20px 0px;
+
+        }
+    }
+}

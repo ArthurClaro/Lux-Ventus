@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, UploadedFiles, UseInterceptors } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, UploadedFiles, UseInterceptors, Request } from '@nestjs/common';
 import { PublishService } from './publish.service';
 import { CreatePublishDto } from './dto/create-publish.dto';
 import { UpdatePublishDto } from './dto/update-publish.dto';
@@ -18,10 +18,28 @@ export class PublishController {
     return this.publishService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.publishService.findOne(id);
+  // @Get(':id')
+  // findManyByCategory(@Param('id') id: string) {
+  //   return this.publishService.findOne(id);
+  // }
+
+  // @Get('unic/:id')
+  // findOneById(@Param('id') id: string ,@Request() req) {
+  //   // console.log(">>>>>>>>", req.user, "<<<<<<<<<<")
+  //   // console.log(id)
+  //   return this.publishService.findOne(id);
+  // }
+
+  @Get('category/:id')
+  findManyByCategory(@Param('id') id: string) {
+    return this.publishService.findManyByCategory(id);
   }
+
+  @Get('unic/:id')
+  findOneById(@Param('id') id: string) {
+    return this.publishService.findOneById(id);
+  }
+  
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updatePublishDto: UpdatePublishDto) {

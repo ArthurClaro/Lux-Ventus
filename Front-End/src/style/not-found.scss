@@ -1,0 +1,54 @@
+.main404 {
+    border-top: 1px solid #BCBCBC;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    margin: 0px 10px;
+
+    h1 {
+        overflow: hidden;
+        font-family: Poppins;
+        font-size: 64px;
+        font-weight: bold;
+        text-align: center;
+        color: #262626;
+        margin: 0;
+    }
+
+    img {
+        @media (max-width: 361px) {
+            width: 300px;
+
+        }
+    }
+
+    p {
+        overflow: hidden;
+        font-family: Poppins;
+        font-size: 20px;
+        text-align: center;
+        color: #262626;
+        margin: 0;
+
+    }
+
+    a {
+        margin: 0;
+        width: 207.24px;
+        height: 41.56px;
+        border-radius: 40px;
+        transform: rotate(-0.47deg);
+        background: rgba(75.66, 224.19, 215.28, 1);
+        overflow: hidden;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        color: #262626;
+        text-decoration: none;
+        padding: 10px 0px;
+        margin-top: 23px;
+        cursor: pointer;
+    }
+}

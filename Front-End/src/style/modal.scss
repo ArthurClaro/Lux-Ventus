@@ -1,0 +1,126 @@
+.p-sidebar {
+    width: 100% !important;
+    background-color: #4CE0D7;
+}
+
+.p-sidebar-content {
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 28px;
+    gap: 6px;
+    margin: 0px 0px;
+
+    &>ul {
+        @media (min-width: 457px) {
+            display: none !important;
+        }
+
+        list-style: none;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 0px;
+
+        &>li {
+            width: 100%;
+
+            &>a {
+                text-decoration: none;
+                color: #262626;
+                font-size: 32px;
+                font-weight: 400;
+            }
+        }
+
+        .active {
+            font-weight: 700;
+        }
+    }
+
+    &>h2 {
+        color: #262626;
+        font-weight: 700;
+        font-size: 32px;
+        width: 100%;
+        margin: 0px 0px 11px 0px;
+        padding-top: 22px;
+
+        @media (max-width: 457px) {
+            border-top: 2px solid black;
+        }
+    }
+
+    &>form {
+        display: flex;
+        flex-direction: row;
+        gap: 22px;
+
+        @media (max-width: 610px) {
+            flex-direction: column;
+        }
+
+        &>.p-icon-field.p-icon-field-right {
+            width: 100%;
+
+            &>.p-inputtext {
+                font-family: "Poppins", sans-serif;
+                width: 100%;
+                height: 68px;
+                border-radius: 40px;
+                background-color: #FFFFFF;
+                padding-left: 45px;
+                border-color: transparent !important;
+                border: transparent !important;
+
+                @media (max-width: 500px) {
+                    padding: 0px 0 0 12px;
+
+                }
+            }
+        }
+
+        .p-inputtext::placeholder {
+            color: #262626 !important;
+            font-size: 14px;
+            font-style: italic;
+
+            @media (max-width: 500px) {
+                font-size: 12px;
+            }
+        }
+
+        .pi.pi-search.p-input-icon {
+            filter: brightness(0) !important;
+            padding-right: 17px;
+            scale: 1.2;
+        }
+
+
+        &>button {
+            width: 331px;
+            width: 20.6875rem;
+            height: 68px;
+            border-radius: 40px;
+            background-color: #36ACA5;
+            box-shadow: 0px 6px 6px 1px rgba(0, 0, 0, 0.07);
+            align-items: center;
+            color: #FFFFFF;
+            font-weight: 700;
+            font-size: 16px;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            padding: 0px;
+
+            @media (max-width: 610px) {
+                width: 100%;
+            }
+
+            @media (max-width: 457px) {
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
