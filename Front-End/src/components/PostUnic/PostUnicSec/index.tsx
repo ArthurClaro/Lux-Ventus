@@ -1,7 +1,7 @@
 "use client"
 import React from 'react';
 import { useAuth } from "@/contexts/authContext";
-import { CommentSchema } from "@/schemas/user.schema";
+import { CommentData, CommentSchema } from "@/schemas/user.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
@@ -20,14 +20,19 @@ import arrowRight from "../../../assets/icons/chevron-right.svg";
 import { hostsData } from "@/data/host";
 import { topRatedData } from "@/data/topRated";
 
-const PostUnicSec = ({ params }) => {
+interface Props {
+    params: string; 
+}
+
+const PostUnicSec: React.FC<Props> = ({ params }) => {
+
     const { postCreate, commentPost, postUnic, categoryCounts, detailPost, setVisibleModal } = useAuth();
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm<CommentData>({
         resolver: zodResolver(CommentSchema)
     });
 
-    const onFormSubmit = (formData) => {
+    const onFormSubmit = (formData: any) => {
         const newData = {
             ...formData,
             likes: 0
@@ -68,7 +73,7 @@ const PostUnicSec = ({ params }) => {
                                     <h5>CHECK THEIR ARTICLE</h5>
                                 </Link>
                                 <div>
-                                    {post.ImagesDetail.map((post) => (
+                                    {post.ImagesDetail.map((post: any) => (
                                         <img key={post.id} src={post.images} alt="tops" />
                                     ))}
                                 </div>
@@ -131,7 +136,7 @@ const PostUnicSec = ({ params }) => {
                     <h2>Your email address will not be published. Required fields are marked <span>*</span></h2>
                     <form onSubmit={handleSubmit(onFormSubmit)}>
                         <label htmlFor="comment">Comment <span>*</span></label>
-                        <textarea placeholder="What do you think about this article?" name=""  {...register("description")} id="comment" cols="30" rows="10" required></textarea>
+                        <textarea placeholder="What do you think about this article?"  {...register("description")} id="comment" cols={30} rows={10} required></textarea>
                         {errors.description ? <p>{errors.description.message}</p> : null}
                         <div>
                             <div className={styles.left}>

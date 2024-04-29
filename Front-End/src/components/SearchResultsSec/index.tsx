@@ -24,7 +24,23 @@ import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/lara-light-cyan/theme.css';
 import { redirect } from 'next/navigation.js';
 
-const ListItem = ({ publishItem }) => (
+interface PublishItem {
+    id: number;
+    img: { src: string };
+    title: string;
+}
+
+interface CategoryCount {
+    name: string;
+    count: number;
+}
+
+interface ListItemProps {
+    publishItem: PublishItem;
+}
+
+const ListItem: React.FC<ListItemProps> = ({ publishItem }) => (
+
     <li>
         <img src={publishItem.img.src} alt="tops" />
         <div>
@@ -37,7 +53,12 @@ const ListItem = ({ publishItem }) => (
     </li>
 );
 
-const TopRatedList = ({ topRatedData }) => (
+interface TopRatedListProps {
+    topRatedData: PublishItem[];
+}
+
+const TopRatedList: React.FC<TopRatedListProps> = ({ topRatedData }) => (
+
     <ul className={styles.asideTopsRatedAlls}>
         {topRatedData.map((publishItem) => (
             <ListItem key={publishItem.id} publishItem={publishItem} />
@@ -45,7 +66,13 @@ const TopRatedList = ({ topRatedData }) => (
     </ul>
 );
 
-const CategoriesList = ({ categoryCounts, setVisibleModal }) => (
+interface CategoriesListProps {
+    categoryCounts: CategoryCount[];
+    setVisibleModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const CategoriesList: React.FC<CategoriesListProps> = ({ categoryCounts, setVisibleModal }) => (
+
     <ul>
         {categoryCounts.map((category, index) => (
             <li key={index}>
@@ -58,7 +85,12 @@ const CategoriesList = ({ categoryCounts, setVisibleModal }) => (
     </ul>
 );
 
-const SearchResultsSec = ({ params }) => {
+interface SearchResultsSecProps {
+    params: { name: string };
+}
+
+const SearchResultsSec: React.FC<SearchResultsSecProps> = ({ params }) => {
+
     const { postsRender, categoryCounts, setVisibleModal } = useAuth()
 
     useEffect(() => {
@@ -69,7 +101,8 @@ const SearchResultsSec = ({ params }) => {
     }, [postsRender]);
 
 
-    const itemTemplate = (product, index) => {
+    const itemTemplate = (product: any) => {
+
         return (
             <div key={product.id} className="articleHiddenCategory" >
                 <div className="articlearticleHiddenDivTop" >
@@ -93,15 +126,15 @@ const SearchResultsSec = ({ params }) => {
         );
     };
 
-    const listTemplate = (items) => (
+    const listTemplate = (items: any) => (
         <div className="grid grid-nogutter">
-            {items && items.map((product) => itemTemplate(product))}
+            {items && items.map((product: any) => itemTemplate(product))}
         </div>
     );
 
     const template2 = {
         layout: ' PrevPageLink PageLinks NextPageLink ',
-        PrevPageLink: (options) => {
+        PrevPageLink: (options: any) => {
             return (
                 <button type="button" className={classNames(options.className, 'border-round')} onClick={options.onClick} disabled={options.disabled}>
                     <i className="pi pi-chevron-left"></i>
@@ -109,7 +142,7 @@ const SearchResultsSec = ({ params }) => {
                 </button>
             );
         },
-        NextPageLink: (options) => {
+        NextPageLink: (options: any) => {
             return (
                 <button type="button" className={classNames(options.className, 'border-round')} onClick={options.onClick} disabled={options.disabled}>
                     <i className="pi pi-chevron-right"></i>
@@ -122,7 +155,7 @@ const SearchResultsSec = ({ params }) => {
 
     return (
         <>
-            <Header />
+            <Header paramsCateg={undefined} />
             <main className="containerMain">
                 <section className={styles.sec}>
                     <article>
@@ -130,7 +163,7 @@ const SearchResultsSec = ({ params }) => {
                         <h1>We have found <span>{postsRender.length}</span> Article(s)</h1>
 
                         <div className='showDivSearchPage'>
-                            <DataView value={postsRender} listTemplate={listTemplate} paginator rows={6} paginatorTemplate={template2} />
+                            <DataView value={postsRender} itemTemplate={itemTemplate} paginator rows={6} paginatorTemplate={template2} />
                         </div>
 
                         <DataViewTemplate value={postsRender} />

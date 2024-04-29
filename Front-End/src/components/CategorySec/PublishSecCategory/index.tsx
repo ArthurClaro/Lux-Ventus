@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, { ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useAuth } from '@/contexts/authContext';
@@ -17,10 +17,24 @@ import arrowInHot from '../../../assets/icons/arrow-small-right.svg';
 import styles from './style.module.scss';
 import DataViewTemplate from '@/components/dataView';
 
-const PublishSecCategory = ({ params }) => {
+interface PublishSecCategoryProps {
+    params: string;
+}
+
+interface Product {
+    id: string;
+    image: string;
+    category: string;
+    createdAt: string;
+    publiHot: boolean;
+    title: string;
+    description: string;
+}
+const PublishSecCategory: React.FC<PublishSecCategoryProps> = ({ params }) => {
+
     const { publishCategory, setVisibleModal, categoryCounts } = useAuth();
 
-    const itemTemplate = (product) => (
+    const itemTemplate = (product: Product) => (
         <div key={product.id} className="articleHiddenCategory">
             <div className="articlearticleHiddenDivTop">
                 <img src={product.image} alt="productImage" />
@@ -42,18 +56,19 @@ const PublishSecCategory = ({ params }) => {
         </div>
     );
 
-    const listTemplate = (items) => {
-        if (!items || items.length === 0) return null;
+    const listTemplate = (items: Product[]) => {
+        // if (!items || items.length === 0) return null; 
+        const list = items.map((product) => itemTemplate(product))
         return (
             <div className="grid grid-nogutter">
-                {items.map((product, index) => itemTemplate(product, index))}
+                {list}
             </div>
         );
     };
 
     const template2 = {
         layout: ' PrevPageLink PageLinks NextPageLink ',
-        PrevPageLink: (options) => (
+        PrevPageLink: (options: any) => (
             <button
                 type="button"
                 className={classNames(options.className, 'border-round')}
@@ -64,7 +79,7 @@ const PublishSecCategory = ({ params }) => {
                 <Ripple />
             </button>
         ),
-        NextPageLink: (options) => (
+        NextPageLink: (options: any) => (
             <button
                 type="button"
                 className={classNames(options.className, 'border-round')}
@@ -84,7 +99,7 @@ const PublishSecCategory = ({ params }) => {
                     The Latest from <span>{params.charAt(0).toUpperCase() + params.slice(1).toLowerCase()}</span>
                 </h1>
                 <div className="showDiv">
-                    <DataView value={publishCategory} listTemplate={listTemplate} paginator rows={6} paginatorTemplate={template2} />
+                    <DataView value={publishCategory} itemTemplate={itemTemplate} paginator rows={6} paginatorTemplate={template2} />
                 </div>
                 <DataViewTemplate value={publishCategory} />
             </article>

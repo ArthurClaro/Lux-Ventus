@@ -2,17 +2,24 @@
 
 import React from 'react';
 import { useAuth } from "@/contexts/authContext";
-import Header from '../Header/index.jsx';
-import Footer from '../Footer/index.jsx';
-import PublishSec from './PublishSec';
-import Loading from '../../app/loading.jsx';
+import Header from '../Header/index.tsx';
+import Footer from '../Footer/index.tsx';
+import PublishSec from './PublishSec/index.tsx';
+import Loading from '../../app/loading.tsx';
 import styles from './style.module.scss';
 import 'primeicons/primeicons.css';
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 import { Carousel } from 'primereact/carousel';
-import { topicsData } from '../../data/topics';
+import { topicsData } from '../../data/topics.js';
 
-const HomeSec = () => {
+interface Product {
+    img: {
+        src: string;
+    };
+    category: string;
+}
+
+const HomeSec: React.FC = () => {
     const { loader } = useAuth();
 
     const responsiveOptions = [
@@ -23,7 +30,7 @@ const HomeSec = () => {
         },
     ];
 
-    const productTemplate = (product) => (
+    const productTemplate = (product: Product) => (
         <div className="cardsCategories border-1 surface-border border-round m-2 text-center py-5 px-3">
             <img src={product.img.src} alt={product.category} className="w-6 shadow-2" />
             <h1 className="w-6 shadow-2" >{product.category}</h1>
@@ -37,7 +44,7 @@ const HomeSec = () => {
                 <Loading />
             ) : (
                 <>
-                    <Header />
+                    <Header paramsCateg={undefined} />
                     <main className="containerMain">
                         <section className={styles.sec}>
                             <div>

@@ -1,5 +1,14 @@
 import { z } from "zod";
 
+export const CommentContextSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  description: z.string(),
+  likes: z.number(),
+  publishId: z.boolean(),
+  createdAt: z.string(),
+})
+export type CommentContextData= z.infer<typeof CommentContextSchema>
 
 export const PublishSchema = z.object({
   id: z.string(),
@@ -11,9 +20,9 @@ export const PublishSchema = z.object({
   host: z.string(),
   imgHost: z.string(),
   createdAt: z.string(),
+  comments: z.array(CommentContextSchema)
 })
 export type PublishData = z.infer<typeof PublishSchema>
-
 
 export const CommentSchema = z.object({
   name: z.string().min(1, "Nome é obrigatório"),
@@ -28,4 +37,15 @@ export const ContactSchema = z.object({
   message: z.string().min(1, "Tópico é obrigatório"),
   description: z.string().min(5, "Deve conter no mínimo 5 caracteres."),
 });
-// export type CommentData = z.infer<typeof CommentSchema>;
+export type ContactData = z.infer<typeof ContactSchema>;
+
+// ///////////////////////
+
+export const DetailPublishSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  description: z.string(),
+  publishId: z.string(),
+})
+export type DetailPublishData = z.infer<typeof DetailPublishSchema>
+

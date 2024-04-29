@@ -1,4 +1,8 @@
-function Loading() {
+import React from 'react';
+
+
+  const Loading: React.FC = () => {
+
   return (
       <div className="divLoader">
         <div className="loader">

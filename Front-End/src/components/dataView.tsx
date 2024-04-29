@@ -10,8 +10,24 @@ import Link from 'next/link';
 import arrowInHot from '../assets/icons/arrow-small-right.svg';
 import { hostsData } from '@/data/host';
 
-const DataViewTemplate = ({ value }) => {
-    const itemTemplate = (product) => (
+interface Product {
+    id: string;
+    image: string;
+    category: string;
+    createdAt: string;
+    publiHot: boolean;
+    title: string;
+    description: string;
+}
+
+interface DataViewTemplateProps {
+    value: Product[];
+}
+
+const DataViewTemplate: React.FC<DataViewTemplateProps> = ({ value }) => {
+
+    const itemTemplate = (product: Product) => (
+
         <div key={product.id} className="articleHidden">
             <div className="articlearticleHiddenDivTop">
                 <img src={product.image} alt="productImage" />
@@ -34,7 +50,8 @@ const DataViewTemplate = ({ value }) => {
         </div>
     );
 
-    const listTemplate = (items) => (
+    const listTemplate = (items: Product[]) => (
+
         <div className="grid grid-nogutter">
             {items.map((product) => itemTemplate(product))}
         </div>
@@ -42,7 +59,7 @@ const DataViewTemplate = ({ value }) => {
 
     const paginatorTemplate = {
         layout: 'PrevPageLink NextPageLink',
-        PrevPageLink: (options) => (
+        PrevPageLink: (options: any) => (
             <button
                 type="button"
                 className={classNames(options.className, 'border-round')}
@@ -56,7 +73,7 @@ const DataViewTemplate = ({ value }) => {
                 <Ripple />
             </button>
         ),
-        NextPageLink: (options) => (
+        NextPageLink: (options: any) => (
             <button
                 type="button"
                 className={classNames(options.className, 'border-round')}
@@ -76,7 +93,7 @@ const DataViewTemplate = ({ value }) => {
         <div className="homeHidden">
             <DataView
                 value={value}
-                listTemplate={listTemplate}
+                itemTemplate={itemTemplate}
                 paginator
                 rows={3}
                 paginatorTemplate={paginatorTemplate}

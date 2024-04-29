@@ -1,0 +1,275 @@
+.sec {
+  background-image: url(../../assets/imgs-bg/contactUsNoot.svg) !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -o-object-fit: cover;
+  object-fit: cover;
+  height: 306px;
+  border-radius: 20px;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 50px;
+  padding: 0px 30px 40px 67px;
+  margin-top: 20px;
+  justify-content: flex-end;
+}
+@media (max-width: 551px) {
+  .sec {
+    background-image: url(../../assets/imgs-bg/contactUsMobile.svg) !important;
+    height: 550px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 197px 0px 0px 0px;
+    gap: 0px;
+  }
+}
+.sec > p {
+  width: 175.2px;
+  height: 21.2px;
+  overflow: hidden;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: left;
+  letter-spacing: 2.76px;
+  color: #FFFFFF;
+  margin: 0;
+  font-weight: 400;
+}
+@media (max-width: 551px) {
+  .sec > p {
+    width: auto;
+  }
+}
+.sec > h1 {
+  width: 391.6px;
+  height: 82.6px;
+  overflow: hidden;
+  font-family: Poppins;
+  font-size: 46px;
+  text-align: left;
+  color: #FFFFFF;
+  margin: 0;
+  font-weight: 400;
+}
+@media (max-width: 551px) {
+  .sec > h1 {
+    width: auto;
+    margin: 0 30px;
+    height: auto;
+    text-align: center;
+  }
+}
+
+.messageSec {
+  display: flex;
+  flex-direction: row;
+  margin-top: 53px;
+  justify-content: space-between;
+  gap: 10px;
+}
+@media (max-width: 1070px) {
+  .messageSec {
+    flex-direction: column;
+  }
+}
+.messageSec > article {
+  display: flex;
+  flex-direction: column;
+  max-width: 845px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0px 6px 6px 1px rgba(0, 0, 0, 0.05);
+  background: rgb(255, 255, 255);
+  padding: 50px 50px;
+  gap: 21px;
+  width: 70%;
+}
+@media (max-width: 1070px) {
+  .messageSec > article {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+@media (max-width: 500px) {
+  .messageSec > article {
+    padding: 20px;
+  }
+}
+.messageSec > article span {
+  color: red;
+}
+.messageSec > article > h2 {
+  overflow: hidden;
+  font-family: Poppins;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: left;
+  color: #262626;
+  margin: 0;
+}
+.messageSec > article > p {
+  overflow: hidden;
+  font-family: Poppins;
+  font-size: 12px;
+  text-align: left;
+  color: #262626;
+  margin: 0;
+}
+.messageSec > article > form {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin: 10px 0px;
+}
+.messageSec > article > form div {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.messageSec > article > form > .divInput {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+.messageSec > article > form > .divInput > div {
+  width: 50%;
+}
+@media (max-width: 551px) {
+  .messageSec > article > form > .divInput {
+    flex-direction: column;
+  }
+  .messageSec > article > form > .divInput > div {
+    width: 100%;
+  }
+}
+.messageSec > article > form label {
+  overflow: hidden;
+  font-family: Poppins;
+  font-size: 12px;
+  text-align: left;
+  color: #262626;
+}
+.messageSec > article > form input {
+  width: 362px;
+  height: 44px;
+  border-radius: 40px;
+  border: 2px solid #bcbcbc;
+  background: rgba(255, 255, 255, 0);
+  padding-left: 18px;
+  width: 100%;
+}
+.messageSec > article > form input::-moz-placeholder {
+  overflow: hidden;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: italic;
+  text-align: left;
+  color: #BCBCBC;
+}
+.messageSec > article > form input::placeholder {
+  overflow: hidden;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: italic;
+  text-align: left;
+  color: #BCBCBC;
+}
+.messageSec > article > form textarea {
+  width: 100%;
+  height: 204px;
+  border-radius: 10px;
+  border: 2px solid #bcbcbc;
+  background: rgba(255, 255, 255, 0);
+  resize: none;
+  padding-left: 18px;
+  padding-top: 10px;
+}
+.messageSec > article > form textarea::-moz-placeholder {
+  overflow: hidden;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: italic;
+  text-align: left;
+  color: #BCBCBC;
+}
+.messageSec > article > form textarea::placeholder {
+  overflow: hidden;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: italic;
+  text-align: left;
+  color: #BCBCBC;
+}
+.messageSec > article > form > button {
+  border: none;
+  width: 178.19px;
+  height: 35.95px;
+  border-radius: 40px;
+  background: rgb(76, 224, 215);
+  overflow: hidden;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  color: #262626;
+  margin-top: 15px;
+  cursor: pointer;
+}
+.messageSec > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  padding: 0px;
+  margin: 0px;
+  width: 30%;
+}
+@media (max-width: 1070px) {
+  .messageSec > ul {
+    margin-top: 50px;
+    width: 100%;
+  }
+}
+.messageSec > ul > li {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 415px;
+  height: 117px;
+  border-radius: 20px;
+  box-shadow: 0px 6px 6px 1px rgba(0, 0, 0, 0.05);
+  background: rgb(255, 255, 255);
+  align-items: center;
+  padding: 0px 34px;
+  width: 100%;
+}
+.messageSec > ul > li > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.messageSec > ul > li > div > p {
+  overflow: hidden;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: left;
+  letter-spacing: 2.88px;
+  color: #BCBCBC;
+  margin: 0;
+}
+.messageSec > ul > li > div > h3 {
+  overflow: hidden;
+  font-family: Poppins;
+  font-size: 16px;
+  text-align: left;
+  color: #262626;
+  margin: 0;
+}/*# sourceMappingURL=style.module.css.map */

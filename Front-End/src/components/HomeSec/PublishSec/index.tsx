@@ -1,4 +1,5 @@
 "use client"
+
 import React from 'react';
 import 'primeicons/primeicons.css';
 import "primereact/resources/themes/lara-light-cyan/theme.css";
@@ -16,9 +17,11 @@ import instagram from "../../../assets/WebSocials/instagram.svg";
 import { topRatedData } from '../../../data/topRated.js';
 import DataViewTemplate from '@/components/dataView';
 
-const PublishSec = () => {
-    const { allPublish, setVisibleModal, publishHot, categoryCounts, firstTwoArrays, lastThreeArrays } = useAuth()
 
+const PublishSec: React.FC = () => {
+
+    const { allPublish, setVisibleModal, publishHot, categoryCounts, firstTwoArrays, lastThreeArrays } = useAuth()
+    
     return (
         <>
             <section className={styles.sec}>

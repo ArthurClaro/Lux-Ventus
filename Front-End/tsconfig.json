@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -12,15 +16,34 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "allowImportingTsExtensions": true,
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/HomeSec/Header/index.jsx", "src/contexts/authContext.jsx", "src/components/loginForm.jsx", "src/app/page.jsx", "src/components/registerForm.jsx", "src/app/category/[category]/page.jsx", "src/app/[id]/page.jsx", "src/app/contactUs/page.jsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/components/HomeSec/Header/index.jsx",
+    "src/contexts/authContext.tsx",
+    "src/components/loginForm.jsx",
+    "src/app/page.tsx",
+    "src/components/registerForm.jsx",
+    "src/app/category/[category]/page.tsx",
+    "src/app/[id]/page.jsx",
+    "src/app/contactUs/page.tsx",
+    "src/components/HomeSec/index.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

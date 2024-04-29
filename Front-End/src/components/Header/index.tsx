@@ -17,11 +17,18 @@ import HamburgerIconMobile from "../../assets/icons/hamburgerIconMobile.svg";
 import 'primeicons/primeicons.css';
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 
-const Header = ({ paramsCateg }) => {
+interface Category {
+    key: string;
+    label: string;
+}
+
+const Header: React.FC<{ paramsCateg: string | undefined }> = ({ paramsCateg }) => {
+
     const { allPublish, setPostsRender, visibleModal, setVisibleModal } = useAuth();
     const router = useRouter();
-    
-    const categories = [
+
+    const categories: Category[] = [
+
         { key: 'fashion', label: 'Fashion' },
         { key: 'lifestyle', label: 'Lifestyle' },
         { key: 'spiritual', label: 'Spiritual' },
@@ -29,10 +36,10 @@ const Header = ({ paramsCateg }) => {
         { key: 'ContactUs', label: 'Contact Us' }
     ];
 
-    const [activeCategory, setActiveCategory] = useState('');
-    const [value, setValue] = useState("");
+    const [activeCategory, setActiveCategory] = useState<string>('');
+    const [value, setValue] = useState<string>("");
 
-    const handleClick = (category) => {
+    const handleClick = (category: string) => {
         if (category === "ContactUs") {
             router.push("/contactUs");
         }
@@ -44,7 +51,7 @@ const Header = ({ paramsCateg }) => {
         router.push("/");
     };
 
-    const submit = (e) => {
+    const submit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setValue("");
         const postResults = allPublish.filter(post =>

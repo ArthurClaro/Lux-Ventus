@@ -1,9 +1,9 @@
 "use client"
-import { ContactSchema } from "@/schemas/user.schema";
+import { ContactData, ContactSchema } from "@/schemas/user.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import Header from '../Header/index.jsx';
-import Footer from '../Footer/index.jsx';
+import { SubmitHandler, useForm } from "react-hook-form";
+import Header from '../Header/index.tsx';
+import Footer from '../Footer/index.tsx';
 import Image from "next/image";
 import styles from './style.module.scss';
 import contactIconEMAIL from "../../assets/icons/contactIconEMAIL.svg";
@@ -11,19 +11,21 @@ import contactIconPHONE from "../../assets/icons/contactIconPHONE.svg";
 import contactIconLOCATION from "../../assets/icons/contactIconLOCATION.svg";
 import Toast from "@/components/toast";
 
-const ContactUsSec = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm({
+
+const ContactUsSec: React.FC = () => {
+
+    const { register, handleSubmit, formState: { errors } } = useForm<ContactData>({
         resolver: zodResolver(ContactSchema)
     });
 
-    const onFormSubmit = (formData) => {
+    const onFormSubmit = (formData: any) => {
         // Envie o formulário
         Toast({ message: "Mensagem enviada com sucesso", isSuccess: true });
     };
 
     return (
         <>
-            <Header />
+            <Header paramsCateg={undefined} />
             <main className={`containerMain contactUs ${styles.main}`}>
                 <section className={styles.sec}>
                     <p>TELL US SOMETHING</p>
@@ -53,7 +55,7 @@ const ContactUsSec = () => {
                             </div>
                             <div>
                                 <label htmlFor="comment">Your Message <span>*</span></label>
-                                <textarea {...register("description")} id="comment" cols="30" rows="10" placeholder="Tell us something." required></textarea>
+                                <textarea {...register("description")} id="comment" cols={30} rows={10} placeholder="Tell us something." required></textarea>
                                 {errors.description && <p>{errors.description.message}</p>}
                             </div>
                             <button type="submit">SEND</button>

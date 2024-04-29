@@ -9,7 +9,14 @@ import linkedin from "../../assets/WebSocials/linkedin.svg";
 import youtube from "../../assets/WebSocials/youtube.svg";
 import instagram from "../../assets/WebSocials/instagram.svg";
 
-const socialIcons = [
+interface SocialIcon {
+    src: string;
+    alt: string;
+    href: string;
+}
+
+const socialIcons: SocialIcon[] = [
+
     { src: facebook, alt: "facebook", href: "" },
     { src: twitter, alt: "twitter", href: "" },
     { src: linkedin, alt: "linkedin", href: "" },
@@ -17,7 +24,8 @@ const socialIcons = [
     { src: instagram, alt: "instagram", href: "" }
 ];
 
-const Footer = () => {
+const Footer: React.FC = () => {
+
     return (
         <footer className={`${styles.footer}`}>
             <div>

@@ -9,7 +9,12 @@ import styles from './style.module.scss';
 import 'primeicons/primeicons.css';
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 
-const CategorySec = ({ params }) => {
+interface CategorySecProps {
+    params: string;
+}
+
+const CategorySec: React.FC<CategorySecProps> = ({ params }) => {
+
     const { getCategoryName, publishCategory } = useAuth();
 
     useEffect(() => {

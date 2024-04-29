@@ -1,10 +1,13 @@
 import HomeSec from "@/components/HomeSec";
 import 'transition-style';
+import React from 'react';
 
-export default async function Home() {
+const Home: React.FC = () => {
   return (
     <div transition-style="in:wipe:right" style={{ paddingTop: "1px" }}>
       <HomeSec />
     </div >
   );
 }
+
+export default Home;
