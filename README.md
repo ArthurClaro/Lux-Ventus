@@ -70,14 +70,50 @@ npm run dev
 
 ## Rotas Disponíveis
 
-- **`/user`** : Página inicial do projeto.
-- **`/user`** : Página inicial do projeto.
-- **`/user`** : Página inicial do projeto.
-- **`/user`** : Página inicial do projeto.
-- **`/user`** : Página inicial do projeto.
-- **/login**: Página para Logn-In & Sign-Up.
-- **/groups/:id**: Página de treinos de seu Usuário.
+- **`/`** : Página inicial do projeto.
+- **`/searchResults/[name]`** : Área de resultados pesquisados.
+- **`/public/[id]`** : Página de publicação.
+- **`/category/[category]`** : Página de categorias relacionadas.
+- **`/contactUs`** : Página para contato.
 
+### 1. Instalando Dependências
+
+Instale as dependências com o comando:
+
+```shell
+yarn
+```
+ou
+```shell
+npm install
+```
+### 2. Variáveis de Ambiente
+
+Em seguida, crie um arquivo **.env**, copiando o formato do arquivo **.env.example**:
+```
+cp .env.example .env
+```
+
+Configure suas variáveis de ambiente com suas credenciais do Postgres e uma nova database da sua escolha.
+
+### 3. Migrations
+
+Execute as migrations com o comando:
+
+```
+npx prisma migrate dev
+```
+### 4. Rodar
+
+Para incializar run dev com o comando:
+
+```
+npm run start:dev
+```
+
+# Todas as Rotas
+
+### `/`
 
 
 
