@@ -1,8 +1,26 @@
+import CountUp from 'react-countup';
+
+
 const BeforeLoader: React.FC = () => {
   return (
     <>
       <div className="divPreLoad">
-
+      <CountUp
+          start={0}
+          end={180}
+          duration={180}
+          separator=" "
+          decimals={4}
+          decimal=","
+          suffix=" seconds"
+          onEnd={() => window.location.reload()}
+        >
+          {({ countUpRef, start }) => (
+            <div>
+              <span ref={countUpRef} />
+            </div>
+          )}
+        </CountUp>
         <div aria-label="Loading..." role="status" className="loader1">
           <div>
             <svg className="spining" viewBox="0 0 256 256">
@@ -18,7 +36,7 @@ const BeforeLoader: React.FC = () => {
             <span className="loading-text">Iniciando Database...</span>
           </div>
 
-          <span className="loading-text">Tempo máximo de espera: (120s)</span>
+          <span className="loading-text">Tempo máximo de espera: (180s)</span>
         </div>
 
         <div className="circ1">
