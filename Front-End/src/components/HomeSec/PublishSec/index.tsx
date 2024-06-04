@@ -21,7 +21,7 @@ import DataViewTemplate from '@/components/dataView';
 const PublishSec: React.FC = () => {
 
     const { allPublish, setVisibleModal, publishHot, categoryCounts, firstTwoArrays, lastThreeArrays } = useAuth()
-    
+
     return (
         <>
             <section className={styles.sec}>

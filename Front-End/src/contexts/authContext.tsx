@@ -34,28 +34,29 @@ interface Comment {
 }
 
 interface AuthContextType {
-    allPublish: any[]; 
-    publishHot: any[]; 
+    allPublish: any[];
+    publishHot: any[];
     categoryCounts: CategoryCount[];
-    firstTwoArrays: any[]; 
+    firstTwoArrays: any[];
     lastThreeArrays: any[];
     publishCategory: any[];
     postUnic: PublishData
     setPostUnic: Dispatch<SetStateAction<PublishData>>
     detailPost: DetailPost[];
     commentPost: Comment[];
-    postsRender: any[]; 
+    postsRender: any[];
     visibleModal: boolean;
     loader: boolean;
+    dataLoad: boolean;
     setAllPublish: React.Dispatch<React.SetStateAction<any[]>>;
     getCategoryName: (category: string) => void;
     getPostId: (id: string) => void;
     getDetailId: (id: string) => void;
     getCommentId: (id: string) => void;
-    postCreate: (formData: any, params: string) => void; 
+    postCreate: (formData: any, params: string) => void;
     setVisibleModal: React.Dispatch<React.SetStateAction<boolean>>;
     setLoader: React.Dispatch<React.SetStateAction<boolean>>;
-    setPostsRender: React.Dispatch<React.SetStateAction<any[]>>; 
+    setPostsRender: React.Dispatch<React.SetStateAction<any[]>>;
 }
 
 const defaultPostUnic: PublishData = {
@@ -74,8 +75,8 @@ const defaultPostUnic: PublishData = {
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 export const AuthProvider = ({ children }: Props) => {
-     const router = useRouter();
-    
+    const router = useRouter();
+
     const [allPublish, setAllPublish] = useState<any[]>([]);
     const [publishHot, setPublishHot] = useState<any[]>([]);
     const [firstTwoArrays, setFirstTwoArrays] = useState<PublishData[]>([]);
@@ -88,11 +89,28 @@ export const AuthProvider = ({ children }: Props) => {
     const [postsRender, setPostsRender] = useState<any[]>([]);
     const [visibleModal, setVisibleModal] = useState(false);
     const [loader, setLoader] = useState(true);
+    const [dataLoad, setDataLoad] = useState(false)
+
+    const arr = async () => {
+        setDataLoad(true)
+        try {
+            const response = await fetch('https://lux-ventus.onrender.com/')
+            const json = await response.text()
+            setDataLoad(false)
+        } catch (error) {
+            setDataLoad(true)
+        } finally {
+            setDataLoad(false)
+            fetchData();
+        }
+    }
+    useEffect(() => {
+        arr()
+    }, []);
 
 
     const fetchData = async () => {
         try {
-            setLoader(true);
             const { data } = await api.get('/publish');
 
             setAllPublish(data);
@@ -108,19 +126,15 @@ export const AuthProvider = ({ children }: Props) => {
             setFirstTwoArrays(shuffledArrays.slice(0, 2));
             setLastThreeArrays(shuffledArrays.slice(2));
             setPublishHot(data.filter(({ publiHot }: Publish) => publiHot));
-            // console.log(lastThreeArrays)
         } catch (error) {
             console.error(error);
+            setLoader(true)
         } finally {
             setTimeout(() => {
                 setLoader(false);
             }, 5000);
         }
     };
-    useEffect(() => {
-        fetchData();
-    }, []);
-
 
     const shuffleArray = (array: any[]) => {
         for (let i = array.length - 1; i > 0; i--) {
@@ -210,7 +224,8 @@ export const AuthProvider = ({ children }: Props) => {
                 visibleModal,
                 setVisibleModal,
                 loader,
-                setLoader
+                setLoader,
+                dataLoad
             }}
         >
             {children}

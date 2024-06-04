@@ -11,6 +11,7 @@ import 'primeicons/primeicons.css';
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 import { Carousel } from 'primereact/carousel';
 import { topicsData } from '../../data/topics.js';
+import BeforeLoader from '../Pré-Loader/index.tsx';
 
 interface Product {
     img: {
@@ -20,7 +21,7 @@ interface Product {
 }
 
 const HomeSec: React.FC = () => {
-    const { loader } = useAuth();
+    const { loader, dataLoad } = useAuth();
 
     const responsiveOptions = [
         {
@@ -40,41 +41,47 @@ const HomeSec: React.FC = () => {
 
     return (
         <>
-            {loader ? (
-                <Loading />
+            {dataLoad ? (
+                <BeforeLoader />
             ) : (
                 <>
-                    <Header paramsCateg={undefined} />
-                    <main className="containerMain">
-                        <section className={styles.sec}>
-                            <div>
-                                <h5>LUX VENTUS MAGAZINE</h5>
-                                <h2>We Are the <span>Ventus Fashion</span></h2>
-                                <p>We like to gossip about everything, but we will never forget the daily fashion dose.</p>
-                            </div>
-                        </section>
+                    {loader ? (
+                        <Loading />
+                    ) : (
+                        <>
+                            <Header paramsCateg={undefined} />
+                            <main className="containerMain">
+                                <section className={styles.sec}>
+                                    <div>
+                                        <h5>LUX VENTUS MAGAZINE</h5>
+                                        <h2>We Are the <span>Ventus Fashion</span></h2>
+                                        <p>We like to gossip about everything, but we will never forget the daily fashion dose.</p>
+                                    </div>
+                                </section>
 
-                        <article className={styles.article}>
-                            <h3>Topics</h3>
-                            <div className="card">
-                                <Carousel
-                                    value={topicsData}
-                                    circular
-                                    numVisible={6}
-                                    numScroll={1}
-                                    responsiveOptions={responsiveOptions}
-                                    autoplayInterval={3000}
-                                    itemTemplate={productTemplate}
-                                />
-                            </div>
-                        </article>
+                                <article className={styles.article}>
+                                    <h3>Topics</h3>
+                                    <div className="card">
+                                        <Carousel
+                                            value={topicsData}
+                                            circular
+                                            numVisible={6}
+                                            numScroll={1}
+                                            responsiveOptions={responsiveOptions}
+                                            autoplayInterval={3000}
+                                            itemTemplate={productTemplate}
+                                        />
+                                    </div>
+                                </article>
 
-                        <hr className="divisor" />
+                                <hr className="divisor" />
 
-                        <PublishSec />
-                    </main>
+                                <PublishSec />
+                            </main>
 
-                    <Footer />
+                            <Footer />
+                        </>
+                    )}
                 </>
             )}
         </>
