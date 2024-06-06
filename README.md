@@ -1,11 +1,11 @@
 ![lux](https://github.com/ArthurClaro/Lux-Ventus/assets/124170421/e33ad244-56bb-481a-baeb-0e277b78dde8)
 
 <h1 align="left">
- <a href="https://front-7v31ebjm6-arthurclaros-projects.vercel.app/">Lux-Ventus</a>
+ <a href="https://front-end-coral-nine.vercel.app/">Lux-Ventus</a>
 </h1>
 
 <div align="left">
-  <a href="https://front-7v31ebjm6-arthurclaros-projects.vercel.app/">
+  <a href="https://front-end-coral-nine.vercel.app/">
     <img src="https://img.shields.io/badge/LINK%20Vercel-000000.svg?style=for-the-badge&logo=Vercel&labelColor=000">
   </a>
   <a href="https://lux-ventus.onrender.com/">
@@ -346,6 +346,6 @@ Content-type: application/json
 ## Conclusão
 A Lux-Ventus é mais do que um blog ou revista; é um destino digital para quem busca inspiração e bem-estar. Combinando moda, estilo de vida, espiritualidade e saúde mental, oferecemos um espaço onde cada visita se transforma em uma experiência enriquecedora. A escolha de Next.js para o front-end e Nest.js para o back-end nos permite fornecer um produto de alta qualidade, seguro e escalável. Esperamos que você desfrute tanto de visitar nossa página quanto nós desfrutamos de criá-la para você.
 
-Visite-nos em [Lux-Ventus](https://front-7v31ebjm6-arthurclaros-projects.vercel.app/)
+Visite-nos em [Lux-Ventus](https://front-end-coral-nine.vercel.app/)
 
 
