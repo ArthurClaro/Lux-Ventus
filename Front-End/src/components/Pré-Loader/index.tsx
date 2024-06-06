@@ -9,13 +9,14 @@ const BeforeLoader: React.FC = () => {
           start={0}
           end={180}
           duration={180}
+          delay={0}
           separator=" "
           decimals={4}
           decimal=","
           suffix=" seconds"
           onEnd={() => window.location.reload()}
         >
-          {({ countUpRef, start }) => (
+          {({ countUpRef }) => (
             <div>
               <span ref={countUpRef} />
             </div>

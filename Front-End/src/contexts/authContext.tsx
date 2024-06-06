@@ -96,7 +96,6 @@ export const AuthProvider = ({ children }: Props) => {
         try {
             const response = await fetch('https://lux-ventus.onrender.com/')
             const json = await response.text()
-            setDataLoad(false)
         } catch (error) {
             setDataLoad(true)
         } finally {
