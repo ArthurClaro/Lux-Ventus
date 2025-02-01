@@ -5,7 +5,7 @@
 </h1>
 
 <div align="left">
-  <a href="https://front-end-coral-nine.vercel.app/">
+  <a href="https://lux-ventus.vercel.app/">
     <img src="https://img.shields.io/badge/LINK%20Vercel-000000.svg?style=for-the-badge&logo=Vercel&labelColor=000">
   </a>
   <a href="https://lux-ventus.onrender.com/">
